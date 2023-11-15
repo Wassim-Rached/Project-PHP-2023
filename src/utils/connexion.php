@@ -1,10 +1,10 @@
 <?php
 
-	include("./dbconfig.php");
-
+	include("dbconfig.php");
+	
 	try {
-		$connection = new PDO('mysql:host='.$host.':'.$port.';dbname='.$dbname,$username,$password);
-		echo 'connexion réussie';
+		$cnx = new PDO('mysql:host='.$host.':'.$port.';dbname='.$dbname,$username,$password);
+		echo '<p>connexion réussie</p>';
 	} catch (PDOException $e) {
 		echo "error : ".$e->getMessage();
 		echo "code : ".$e->getCode();
