@@ -52,3 +52,18 @@ INSERT INTO Enseignant (
 	'Bouazizi',
 	'Mehdi'
 );
+
+INSERT INTO Administrateur (
+	id_admin,
+	login,
+	mot_de_passe
+) VALUES (
+	'0001',
+	'admin',
+	'password'
+),
+(
+	'0002',
+	'wassim',
+	'password'
+)
