@@ -1,5 +1,9 @@
 <?php
-	include("authentication/login.php");
-	echo "<br>";
-	include("authentication/logout.php");
+
+	session_start();
+	if (isset($_SESSION['login']) && $_SESSION["login"]){
+		include("authentication/logout.php");
+	}else{
+		include("authentication/login.php");
+	}
 ?>
