@@ -1,6 +1,19 @@
 version: "3"
-
 services:
+  web:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www/html
+    depends_on:
+      - php
+      - db
+      - phpmyadmin
+  php:
+    image: php:7.4-fpm
+    volumes:
+      - ./src:/var/www/html
   db:
     image: mysql:latest
     container_name: db
