@@ -6,9 +6,17 @@ services:
       - "8080:80"
     volumes:
       - ./src:/var/www/html
+      - ./nginx-conf:/etc/nginx/conf.d
     depends_on:
+      - php
       - db
       - phpmyadmin
+
+  php:
+    image: php:7.4-fpm
+    volumes:
+      - ./src:/var/www/html
+
   db:
     image: mysql:latest
     container_name: db
@@ -21,6 +29,7 @@ services:
       - "6033:3306"
     volumes:
       - dbdata:/var/lib/mysql
+
   phpmyadmin:
     image: phpmyadmin:latest
     container_name: pma
