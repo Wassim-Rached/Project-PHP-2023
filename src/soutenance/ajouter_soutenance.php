@@ -1,5 +1,7 @@
 <?php
 	
+	include('../utils/adminOnlyPage.php');
+	
 	include('../utils/connexion.php');
 
 	$query = 'SELECT NCE,nom FROM Etudiant';

@@ -1,5 +1,7 @@
 <?php
 
+	include('../utils/adminOnlyPage.php');
+
 	if (!isset($_GET['NCE'])) {
 		exit('NCE is required');
 	}
