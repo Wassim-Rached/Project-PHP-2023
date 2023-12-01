@@ -1,0 +1,28 @@
+@import url("./main.css");
+
+nav {
+  display: flex;
+  background-color: var(--light-primary-color);
+  padding: 10px;
+}
+
+nav .links-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+nav .links-container ul {
+  padding: 10px;
+  display: flex;
+  gap: 4px;
+  margin: 0;
+}
+
+nav .links-container ul li a {
+  text-transform: capitalize;
+  padding: 10px;
+  transition: all 0.3s ease;
+  background: var(--primary-color);
+  border-radius: 5px;
+}
