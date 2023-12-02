@@ -1,8 +1,7 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    include('utils/connexion.php');
-    
+
     $login = $_POST['login'];
     $mot_de_passe = $_POST['mot_de_passe'];
 
@@ -13,27 +12,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $statement->bindParam(':mot_de_passe', $mot_de_passe);
     $statement->execute();
 
-	$row = $statement->fetch();
+    $row = $statement->fetch();
 
-	if ($row) {
-		session_start();
+    if ($row) {
+        session_start();
 
-		$_SESSION['login'] = $row['login'];
+        $_SESSION['login'] = $row['login'];
 
-		header('Location: index.php');
-	} else {
-		echo 'Login failed';
-	}
+        header('Location: index.php');
+    } else {
+        $error = 'login ou mot de passe incorrect';
+    }
 }
 
 ?>
+<div class="container">
+    <?php if (isset($error)) : ?>
+        <div class="alert alert-danger mt-3" role="alert">
+            <?= $error ?>
+        </div>
+    <?php endif ?>
+    <form method="POST" action="<?php $_SERVER['PHP_SELF'] ?>">
+        <div>
+            <label class="form-label" for="login">login:</label>
+            <input class="form-control" type="text" id="login" name="login" required>
+        </div>
+        <div>
+            <label class='form-label' for="mot_de_passe">mot_de_passe:</label>
+            <input class='form-control' type="password" id="mot_de_passe" name="mot_de_passe" required>
+        </div>
 
-<form method="POST" action="<?php $_SERVER['PHP_SELF'] ?>">
-    <label for="login">login:</label>
-    <input type="text" id="login" name="login" required>
 
-    <label for="mot_de_passe">mot_de_passe:</label>
-    <input type="password" id="mot_de_passe" name="mot_de_passe" required>
+        <button type="submit" class="btn btn-primary mt-3">Login</button>
+    </form>
+</div>
 
-    <button type="submit">Login</button>
-</form>
+
+<link rel="stylesheet" href="/css/navbar.css">
+<script src="/js/navbar.js"></script>
