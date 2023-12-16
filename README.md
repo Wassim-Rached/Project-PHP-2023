@@ -1,4 +1,4 @@
-# Mini Projet - Gestion des Stages
+# Mini Projet 2023 - Gestion des Stages
 
 ## Introduction
 
